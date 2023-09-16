@@ -1,4 +1,6 @@
 ﻿@{
+    var justLoggedIn = TempData["JustLoggedIn"] as bool?;
+    var fullName = TempData["FullName"] as string;
     ViewBag.Title = "Home Page";
 }
 
@@ -29,3 +31,30 @@
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script src="~/Scripts/notify.min.js" defer></script>
+
+    <script>
+        $(document).ready(function () {
+            // For testing
+
+            $.notify.defaults({
+                position: 'top left'
+            });
+            //$.notify("Testing on notify JS - About Page", "success");
+
+            // If the user just logged in, welcome them
+            @if (justLoggedIn.HasValue && justLoggedIn.Value)
+            {
+                   
+                <text>
+                $.notify("Welcome back, " + '@fullName', "success");
+                </text>
+            }
+        });
+    </script>
+}

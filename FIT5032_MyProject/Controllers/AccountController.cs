@@ -70,6 +70,7 @@ namespace FIT5032_MyProject.Controllers
         {
             if (!ModelState.IsValid)
             {
+                
                 return View(model);
             }
 
@@ -79,6 +80,12 @@ namespace FIT5032_MyProject.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    var user = await UserManager.FindByEmailAsync(model.Email);
+                    if (user != null) //notify.js used to validate username
+                    {
+                        TempData["JustLoggedIn"] = true;
+                        TempData["FullName"] = $"{user.Firstname} {user.Lastname}";
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
