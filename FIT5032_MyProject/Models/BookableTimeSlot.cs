@@ -7,7 +7,7 @@ using System.Web;
 
 namespace FIT5032_MyProject.Models
 {
-    public class Appointment
+    public class BookableTimeSlot
     {
         //pk
         public int Id { get; set; }
@@ -30,20 +30,13 @@ namespace FIT5032_MyProject.Models
         public int BranchId { get; set; }
         [ForeignKey("BranchId")]
         public virtual Branch Branch { get; set; }
-
-
-        //patient and staff fk 
+ 
         [Required]
-        public string PatientUserId { get; set; }  // FK to AspNetUsers
-        [Required]
-        public string StaffUserId { get; set; }    // FK to AspNetUsers
-        [ForeignKey("PatientUserId")]
-        public virtual ApplicationUser PatientUser { get; set; }
-        [ForeignKey("StaffUserId")]
-        public virtual ApplicationUser StaffUser { get; set; }
+        public string DoctorUserId { get; set; }    // FK to AspNetUsers
+        [ForeignKey("DoctorUserId")]
+        public virtual ApplicationUser DoctorUser { get; set; }
 
-
-
+        public Boolean IsAvailable { get; set; }
 
     }
 }

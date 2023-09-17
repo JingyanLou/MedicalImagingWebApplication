@@ -17,9 +17,9 @@ namespace FIT5032_MyProject.Models
 
         //appointment fk
         [Required]
-        public int AppointmentId { get; set; }
-        [ForeignKey("AppointmentId")]
-        public virtual Appointment Appointment { get; set; }
+        public int BookableTimeSlotId { get; set; }
+        [ForeignKey("BookableTimeSlotId ")]
+        public virtual BookableTimeSlot BookableTimeSlot{ get; set; }
 
 
     }

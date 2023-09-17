@@ -169,6 +169,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BookableTimeSlotsController.cs" />
     <Compile Include="Controllers\BranchesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -203,9 +204,17 @@
     <Compile Include="Migrations\202309141234352_appointmentandreport.designer.cs">
       <DependentUpon>202309141234352_appointmentandreport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309161224169_appoinmentstaffremove.cs" />
+    <Compile Include="Migrations\202309161224169_appoinmentstaffremove.designer.cs">
+      <DependentUpon>202309161224169_appoinmentstaffremove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309161259174_updateappt.cs" />
+    <Compile Include="Migrations\202309161259174_updateappt.designer.cs">
+      <DependentUpon>202309161259174_updateappt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\BookableTimeSlot.cs" />
     <Compile Include="Models\Branch.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ImageMRI.cs" />
@@ -325,6 +334,11 @@
     <Content Include="Views\Branches\Details.cshtml" />
     <Content Include="Views\Branches\Edit.cshtml" />
     <Content Include="Views\Branches\Index.cshtml" />
+    <Content Include="Views\BookableTimeSlots\Create.cshtml" />
+    <Content Include="Views\BookableTimeSlots\Details.cshtml" />
+    <Content Include="Views\BookableTimeSlots\Delete.cshtml" />
+    <Content Include="Views\BookableTimeSlots\Edit.cshtml" />
+    <Content Include="Views\BookableTimeSlots\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -363,6 +377,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309141234352_appointmentandreport.resx">
       <DependentUpon>202309141234352_appointmentandreport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309161224169_appoinmentstaffremove.resx">
+      <DependentUpon>202309161224169_appoinmentstaffremove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309161259174_updateappt.resx">
+      <DependentUpon>202309161259174_updateappt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
