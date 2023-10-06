@@ -14,6 +14,7 @@ namespace FIT5032_MyProject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        //[Authorize]
         // GET: BookableTimeSlots
         public ActionResult Index()
         {
@@ -36,6 +37,7 @@ namespace FIT5032_MyProject.Controllers
             return View(bookableTimeSlot);
         }
 
+        
         // GET: BookableTimeSlots/Create
         public ActionResult Create()
         {
@@ -70,6 +72,13 @@ namespace FIT5032_MyProject.Controllers
         // GET: BookableTimeSlot/Edit/5
         public ActionResult Edit(int? id)
         {
+
+            ViewBag.BranchId = new SelectList(db.Branches, "Id", "Name");
+            var DoctorRole = db.Roles.Where(r => r.Name == "Doctor").FirstOrDefault();
+            var Doctors = db.Users.Where(u => u.Roles.Any(r => r.RoleId == DoctorRole.Id)).ToList();
+            ViewBag.BranchId = new SelectList(db.Branches, "Id", "Name");
+            ViewBag.DoctorUserId = new SelectList(Doctors, "Id", "Firstname");
+
             //to be continued! need to add more stuffs in here 
             if (id == null)
             {
@@ -91,6 +100,12 @@ namespace FIT5032_MyProject.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Date,StartTime,EndTime,BranchId,DoctorUserId,IsAvailable")] BookableTimeSlot bookableTimeSlot)
         {
+            ViewBag.BranchId = new SelectList(db.Branches, "Id", "Name");
+            var DoctorRole = db.Roles.Where(r => r.Name == "Doctor").FirstOrDefault();
+            var Doctors = db.Users.Where(u => u.Roles.Any(r => r.RoleId == DoctorRole.Id)).ToList();
+            ViewBag.BranchId = new SelectList(db.Branches, "Id", "Name");
+            ViewBag.DoctorUserId = new SelectList(Doctors, "Id", "Firstname");
+
             if (ModelState.IsValid)
             {
                 db.Entry(bookableTimeSlot).State = EntityState.Modified;

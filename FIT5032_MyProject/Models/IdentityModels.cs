@@ -37,6 +37,8 @@ namespace FIT5032_MyProject.Models
         public virtual DbSet<BookableTimeSlot> BookableTimeSlots { get; set; }
         public virtual DbSet<Report> Reports { get; set; }
 
+        public virtual DbSet<Booking> Bookings { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

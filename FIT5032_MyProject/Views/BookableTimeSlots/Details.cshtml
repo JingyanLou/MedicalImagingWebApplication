@@ -1,10 +1,44 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+﻿@model FIT5032_MyProject.Models.BookableTimeSlot
 
-</body>
-</html>
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details for Time Slot</h2>
+
+<div>
+    <h4>Bookable Time Slot Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dt>@Html.DisplayNameFor(model => model.Date)</dt>
+        <dd>@Html.DisplayFor(model => model.Date)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.StartTime)</dt>
+        <dd>@Html.DisplayFor(model => model.StartTime)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.EndTime)</dt>
+        <dd>@Html.DisplayFor(model => model.EndTime)</dd>
+
+        <dt>Branch Name</dt>
+        <dd>@Html.DisplayFor(model => model.Branch.Name)</dd>
+
+        <dt>Doctor Name</dt>
+        <dd>@Html.DisplayFor(model => model.DoctorUser.Firstname)</dd>
+
+        <dt>Availability</dt>
+        <dd>@(Model.IsAvailable ? "Available" : "Not Available")</dd>
+
+    </dl>
+</div>
+<p>
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })
+        <span> | </span>
+    }
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success" })
+</p>
+

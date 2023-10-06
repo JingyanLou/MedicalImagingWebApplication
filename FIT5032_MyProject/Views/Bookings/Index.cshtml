@@ -1,0 +1,72 @@
+﻿@model IEnumerable<FIT5032_MyProject.Models.Booking>
+
+@{
+    ViewBag.Title = "My Appointments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Appointments</h2>
+
+<table class="table" id="datatable">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Branch</th>
+            @if (User.IsInRole("Admin") || User.IsInRole("Patient"))
+            {
+                <th>Doctor</th>
+            }
+            @if (User.IsInRole("Admin") || User.IsInRole("Doctor"))
+            {
+                <th>Patient</th>
+            }
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => booking.BookableTimeSlot.Date)</td>
+                <td>@Html.DisplayFor(modelItem => booking.BookableTimeSlot.StartTime)</td>
+                <td>@Html.DisplayFor(modelItem => booking.BookableTimeSlot.EndTime)</td>
+                <td>@Html.DisplayFor(modelItem => booking.BookableTimeSlot.Branch.Name)</td>
+
+                @if (User.IsInRole("Admin") || User.IsInRole("Patient"))
+                {
+                    <td>@Html.DisplayFor(modelItem => booking.BookableTimeSlot.DoctorUser.Firstname)</td>
+                }
+
+                @if (User.IsInRole("Admin") || User.IsInRole("Doctor"))
+                {
+                    <td>@Html.DisplayFor(modelItem => booking.PatientUser.Firstname)</td>
+                }
+
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = booking.Id }, new { @class = "btn btn-success" })
+
+                    @if (!User.IsInRole("Doctor"))
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = booking.Id }, new { @class = "btn btn-danger" })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/datatable")
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#datatable').DataTable();
+        });
+    </script>
+}

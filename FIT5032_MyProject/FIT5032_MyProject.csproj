@@ -170,6 +170,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookableTimeSlotsController.cs" />
+    <Compile Include="Controllers\BookingsController.cs" />
     <Compile Include="Controllers\BranchesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -212,9 +213,14 @@
     <Compile Include="Migrations\202309161259174_updateappt.designer.cs">
       <DependentUpon>202309161259174_updateappt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310060618489_booking.cs" />
+    <Compile Include="Migrations\202310060618489_booking.designer.cs">
+      <DependentUpon>202310060618489_booking.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookableTimeSlot.cs" />
+    <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Branch.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ImageMRI.cs" />
@@ -339,6 +345,9 @@
     <Content Include="Views\BookableTimeSlots\Delete.cshtml" />
     <Content Include="Views\BookableTimeSlots\Edit.cshtml" />
     <Content Include="Views\BookableTimeSlots\Index.cshtml" />
+    <Content Include="Views\Bookings\Index.cshtml" />
+    <Content Include="Views\Bookings\Delete.cshtml" />
+    <Content Include="Views\Bookings\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -383,6 +392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309161259174_updateappt.resx">
       <DependentUpon>202309161259174_updateappt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310060618489_booking.resx">
+      <DependentUpon>202310060618489_booking.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

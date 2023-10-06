@@ -26,10 +26,13 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>xs
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Timeslot", "Index", "BookableTimeSlots")</li>
+
                     @if (User.Identity.IsAuthenticated)
                     {
+
                         <li>@Html.ActionLink("Branch", "Index", "Branches")</li>
+                        <li>@Html.ActionLink("Timeslot", "Index", "BookableTimeSlots")</li>
+                        <li>@Html.ActionLink("Appointment", "Index", "Bookings")</li>
                     }
 
                 </ul>
