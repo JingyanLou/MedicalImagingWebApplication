@@ -48,7 +48,7 @@ namespace FIT5032_MyProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Address")] Branch branch)
+        public ActionResult Create([Bind(Include = "Id,Name,Address,Latitude,Longitude")] Branch branch)
         {
             if (ModelState.IsValid)
             {
@@ -81,7 +81,7 @@ namespace FIT5032_MyProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Address")] Branch branch)
+        public ActionResult Edit([Bind(Include = "Id,Name,Address,Latitude,Longitude")] Branch branch)
         {
             if (ModelState.IsValid)
             {

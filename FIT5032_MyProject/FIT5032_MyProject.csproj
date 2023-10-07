@@ -217,6 +217,14 @@
     <Compile Include="Migrations\202310060618489_booking.designer.cs">
       <DependentUpon>202310060618489_booking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310070955048_branchlocation.cs" />
+    <Compile Include="Migrations\202310070955048_branchlocation.designer.cs">
+      <DependentUpon>202310070955048_branchlocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310071006007_longladecimal.cs" />
+    <Compile Include="Migrations\202310071006007_longladecimal.designer.cs">
+      <DependentUpon>202310071006007_longladecimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookableTimeSlot.cs" />
@@ -299,6 +307,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\location.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\notify.min.js" />
     <Content Include="Web.config" />
@@ -395,6 +404,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310060618489_booking.resx">
       <DependentUpon>202310060618489_booking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310070955048_branchlocation.resx">
+      <DependentUpon>202310070955048_branchlocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310071006007_longladecimal.resx">
+      <DependentUpon>202310071006007_longladecimal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

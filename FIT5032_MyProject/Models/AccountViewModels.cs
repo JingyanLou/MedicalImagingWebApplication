@@ -9,6 +9,24 @@ namespace FIT5032_MyProject.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        //newly added for external loginin
+        [Required]
+        [Display(Name = "First name")]
+        public string Firstname { get; set; }
+
+        [Required]
+        [Display(Name = "Last name")]
+        public string Lastname { get; set; }
+
+        [Required]
+        [Display(Name = "Phone")]
+        public string PhoneNumber { get; set; }
+
+
+        [Required]
+        [Display(Name = "Date of birth")]
+        public DateTime DOB { get; set; }
     }
 
     public class ExternalLoginListViewModel

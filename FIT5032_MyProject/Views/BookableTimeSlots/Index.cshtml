@@ -10,7 +10,7 @@
 <p>
     @if (User.IsInRole("Admin")) //only admin can create 
     {
-        @Html.ActionLink("Create New", "Create",new { @class = "btn btn-success" })
+        @Html.ActionLink("Create New", "Create","BookableTimeSlots",new { @class = "btn btn-success" })
     }
 
 </p>

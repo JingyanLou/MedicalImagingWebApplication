@@ -385,13 +385,26 @@ namespace FIT5032_MyProject.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {
+                    UserName = model.Email, 
+                    Email = model.Email,
+                    Firstname= model.Firstname,
+                    Lastname=model.Lastname,
+                    DOB=model.DOB,
+                    PhoneNumber = model.PhoneNumber
+
+                };
+
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+                    
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                    
+
                     if (result.Succeeded)
                     {
+                       
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }

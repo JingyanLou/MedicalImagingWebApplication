@@ -10,9 +10,13 @@
 <p>
     @if (User.IsInRole("Admin")) //only admin can create
     {
-        @Html.ActionLink("Create New", "Create", new { @class = "btn btn-success" })
+        @Html.ActionLink("Create New", "Create", "Branch", new { @class = "btn btn-success" })
     }
 </p>
+
+<div id='map' style='height:300px;'></div>
+
+
 <table class="table" id="datatable">
     <thead>
         <tr>
@@ -22,6 +26,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Address)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </th>
             <th>Options</th>
         </tr>
 
@@ -30,13 +40,20 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+            <tr class="coordinates">
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
-                <td>
+                <td class="description">
                     @Html.DisplayFor(modelItem => item.Address)
                 </td>
+                <td class="latitude">
+                    @Html.DisplayFor(modelItem => item.Latitude)
+                </td>
+                <td class="longitude">
+                    @Html.DisplayFor(modelItem => item.Longitude)
+                </td>
+
                 <td>
                     @if (!User.IsInRole("Admin")) //staff and users can only see details
                     {
@@ -65,13 +82,23 @@
 </table>
 
 
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/datatable")
+
 
 @section scripts{
+    @Scripts.Render("~/bundles/mapbox")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/datatable")
+
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css' type='text/css' />
+
+
     <script>
         $(document).ready(function () {
             let table = new DataTable('#datatable');
         })
+
     </script>
+
 }
