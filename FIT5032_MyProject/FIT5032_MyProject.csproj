@@ -174,6 +174,7 @@
     <Compile Include="Controllers\BranchesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -225,13 +226,24 @@
     <Compile Include="Migrations\202310071006007_longladecimal.designer.cs">
       <DependentUpon>202310071006007_longladecimal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310101040422_removemodel.cs" />
+    <Compile Include="Migrations\202310101040422_removemodel.designer.cs">
+      <DependentUpon>202310101040422_removemodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310101112429_report.cs" />
+    <Compile Include="Migrations\202310101112429_report.designer.cs">
+      <DependentUpon>202310101112429_report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310101126023_newreportsystem.cs" />
+    <Compile Include="Migrations\202310101126023_newreportsystem.designer.cs">
+      <DependentUpon>202310101126023_newreportsystem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookableTimeSlot.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Branch.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ImageMRI.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -357,9 +369,15 @@
     <Content Include="Views\Bookings\Index.cshtml" />
     <Content Include="Views\Bookings\Delete.cshtml" />
     <Content Include="Views\Bookings\Details.cshtml" />
+    <Content Include="Views\Reports\Create.cshtml" />
+    <Content Include="Views\Reports\Delete.cshtml" />
+    <Content Include="Views\Reports\Details.cshtml" />
+    <Content Include="Views\Reports\Edit.cshtml" />
+    <Content Include="Views\Reports\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -410,6 +428,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310071006007_longladecimal.resx">
       <DependentUpon>202310071006007_longladecimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310101040422_removemodel.resx">
+      <DependentUpon>202310101040422_removemodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310101112429_report.resx">
+      <DependentUpon>202310101112429_report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310101126023_newreportsystem.resx">
+      <DependentUpon>202310101126023_newreportsystem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

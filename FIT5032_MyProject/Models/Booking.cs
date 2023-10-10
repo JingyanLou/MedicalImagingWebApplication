@@ -21,5 +21,7 @@ namespace FIT5032_MyProject.Models
         [ForeignKey("PatientUserId")]
         public virtual ApplicationUser PatientUser { get; set; }
 
+
+
     }
 }
