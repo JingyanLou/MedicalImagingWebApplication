@@ -26,11 +26,11 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td>g
             @Html.DisplayFor(modelItem => item.Booking.PatientUserId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ImagePath)
+            <img class="img-thumbnail" src="@Url.Content("~/Upload/"+item.ImagePath)" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Title)

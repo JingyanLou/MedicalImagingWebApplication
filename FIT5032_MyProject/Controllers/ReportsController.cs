@@ -40,6 +40,7 @@ namespace FIT5032_MyProject.Controllers
         // GET: Reports/Create
         public ActionResult Create()
         {
+            
             ViewBag.BookingId = new SelectList(db.Bookings, "Id", "PatientUserId");
             return View();
         }
@@ -59,8 +60,7 @@ namespace FIT5032_MyProject.Controllers
 
             if (ModelState.IsValid)
             {
-
-                string serverPath = Server.MapPath("~/Uploads/");
+                string serverPath = Server.MapPath("~/Upload/");
                 string fileExtension = Path.GetExtension(postedFile.FileName);
                 string filePath = report.ImagePath + fileExtension;
                 report.ImagePath = filePath;
