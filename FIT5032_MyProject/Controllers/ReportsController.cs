@@ -95,8 +95,25 @@ namespace FIT5032_MyProject.Controllers
                     String subject = "Your Report from Clinic";
                     String imagePath = Server.MapPath("~/Upload/" + report.ImagePath);
 
+                    // Fetching the required details
+                    String patientName = report.Booking.PatientUser.Firstname;
+                    int bookingId = report.Booking.Id;
+                    DateTime bookingDate = report.Booking.BookableTimeSlot.Date;
+                    DateTime startTime = report.Booking.BookableTimeSlot.StartTime;
+                    DateTime endTime = report.Booking.BookableTimeSlot.EndTime;
+                    String bookingDoctor = report.Booking.BookableTimeSlot.DoctorUser.Firstname;
+
+                    // Formatting the email content
+                    String emailContent = $"Hello {patientName},\n\n" +
+                                          $"Please find your report attached. Below are your booking details:\n\n" +
+                                          $"Booking ID: {bookingId}\n" +
+                                          $"Date: {bookingDate.ToShortDateString()}\n" +
+                                          $"Time: {startTime.ToShortTimeString()} - {endTime.ToShortTimeString()}\n" +
+                                          $"Doctor: {bookingDoctor}\n";
+
+
                     EmailSender es = new EmailSender();
-                    es.SendWithAttachment(toEmail, subject, "Please find your report attached.", imagePath); // Modify EmailSender to handle attachments
+                    es.SendWithAttachment(toEmail, subject, emailContent, imagePath); 
 
                     ViewBag.Result = "Email with report has been sent.";
 
@@ -111,6 +128,19 @@ namespace FIT5032_MyProject.Controllers
                 }
             }
             return View(model);
+        }
+
+
+        public ActionResult ShowImage(int id)
+        {
+            var report = db.Reports.Find(id);
+            if (report == null)
+            {
+                return HttpNotFound();
+            }
+
+            var imagePath = "~/Upload/" + report.ImagePath;
+            return View((object)imagePath);
         }
 
 
@@ -236,17 +266,57 @@ namespace FIT5032_MyProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ImagePath,Title,BookingId")] Report report)
+        public ActionResult Edit(int id, HttpPostedFileBase postedFile)
         {
+            // Fetch the report from the database based on the ID
+            var report = db.Reports.Find(id);
+
+            if (report == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Check if the booking belongs to the logged-in doctor
+            var currentUserId = User.Identity.GetUserId();
+            var booking = db.Bookings.FirstOrDefault(b => b.Id == report.BookingId && b.BookableTimeSlot.DoctorUserId == currentUserId);
+
+            if (booking == null)
+            {
+                // If booking doesn't belong to the logged-in doctor or doesn't exist
+                ModelState.AddModelError("", "Invalid booking selected.");
+                return View(report);
+            }
+
+            // If a new image file is provided
+            if (postedFile != null && postedFile.ContentLength > 0)
+            {
+                // Create a unique filename
+                var myUniqueFileName = string.Format(@"{0}", Guid.NewGuid());
+                string fileExtension = Path.GetExtension(postedFile.FileName);
+                string filePath = myUniqueFileName + fileExtension;
+
+                // Save the uploaded file to the server
+                string serverPath = Server.MapPath("~/Upload/");
+                postedFile.SaveAs(serverPath + filePath);
+
+                // Update the ImagePath in the report record
+                report.ImagePath = filePath;
+            }
+
+            // Update the database and return to the index view
             if (ModelState.IsValid)
             {
                 db.Entry(report).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            // If the model isn't valid, return to the Edit view with the current report data
             ViewBag.BookingId = new SelectList(db.Bookings, "Id", "PatientUserId", report.BookingId);
             return View(report);
         }
+
+
 
         // GET: Reports/Delete/5
         public ActionResult Delete(int? id)

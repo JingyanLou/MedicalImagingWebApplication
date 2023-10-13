@@ -27,7 +27,7 @@ namespace FIT5032_MyProject.Utils
         public void SendWithAttachment(String toEmail, String subject, String contents, String attachmentPath)
         {
             var client = new SendGridClient(API_KEY);
-            var from = new EmailAddress("jlou0008@student.monash.edu", "FIT5032 Notification");
+            var from = new EmailAddress("jlou0008@student.monash.edu", "MegaScan");
             var to = new EmailAddress(toEmail, "");
             var plainTextContent = contents;
             var htmlContent = "<p>" + contents + "</p>";

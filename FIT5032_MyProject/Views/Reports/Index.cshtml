@@ -9,7 +9,7 @@
 
 @if (User.IsInRole("Doctor"))
 {
-    <p>@Html.ActionLink("Create New", "Create")</p>
+    <p>@Html.ActionLink("Create New", "Create","Report", new { @class = "btn btn-success" })</p>
 }
 
 <table class="table">
@@ -45,20 +45,21 @@
             }
             <td>@item.Booking.BookableTimeSlot.Branch.Name</td>
             <td>
-                <img class="img-thumbnail" src="@Url.Content("~/Upload/"+item.ImagePath)" alt="Report Image" />
+                @Html.ActionLink(Path.GetFileName(item.ImagePath), "ShowImage", new { id = item.Id })
             </td>
+
             <td>@item.Title</td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-success" })
                 @if (User.IsInRole("Admin") || User.IsInRole("Doctor"))
                 {
-                    @Html.Raw(" | ") @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    @Html.Raw(" | ") @Html.ActionLink("Edit", "Edit", new { id = item.Id },new { @class = "btn btn-success" })
                 }
-                @if (User.IsInRole("Admin"))
+                @if (User.IsInRole("Admin") || User.IsInRole("Doctor"))
                 {
-                    @Html.Raw(" | ") @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.Raw(" | ") @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
                 }
-                @Html.Raw(" | ") @Html.ActionLink("Send to Email", "SendReport", new { id = item.Id }, new { @class = "send-report-link" })
+                @Html.Raw(" | ") @Html.ActionLink("Send to Email", "SendReport", new { id = item.Id }, new { @class = "btn btn-success" })
             </td>
         </tr>
     }
