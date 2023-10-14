@@ -32,7 +32,7 @@
 
 
 <!--RATING SYSTEM HERE -->
-@using (Html.BeginForm("GiveRate", "Branchs", FormMethod.Post))
+@using (Html.BeginForm("GiveRate", "Branches", FormMethod.Post))
 {
     <div class="rate">
         <input type="radio" id="star5" name="Rate" value="5" />
@@ -48,7 +48,7 @@
     </div>
 
     <!-- Hidden input to submit the branch ID -->
-    <input type="hidden" name="id" value="@Model.Id" />
+    <input type="hidden" name="Id" value="@Model.Id" />
 
     <button type="submit" class="btn btn-primary">Submit Rating</button>
 }
