@@ -1,46 +1,65 @@
 ﻿@model IEnumerable<FIT5032_MyProject.Models.Report>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Reports";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Reports</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Booking.PatientUserId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>g
-            @Html.DisplayFor(modelItem => item.Booking.PatientUserId)
-        </td>
-        <td>
-            <img class="img-thumbnail" src="@Url.Content("~/Upload/"+item.ImagePath)" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+@if (User.IsInRole("Doctor"))
+{
+    <p>@Html.ActionLink("Create New", "Create")</p>
 }
 
+<table class="table">
+    <tr>
+        <th>Date</th>
+        <th>Time</th>
+        @if (User.IsInRole("Doctor") || User.IsInRole("Admin"))
+        {
+            <th>Patient</th>
+        }
+        @if (User.IsInRole("Patient") || User.IsInRole("Admin"))
+        {
+            <th>Doctor</th>
+        }
+        <th>Branch</th>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Booking.BookableTimeSlot.Date.ToShortDateString()</td>
+            <td>@String.Format("{0} - {1}", item.Booking.BookableTimeSlot.StartTime.ToShortTimeString(), item.Booking.BookableTimeSlot.EndTime.ToShortTimeString())</td>
+            @if (User.IsInRole("Doctor") || User.IsInRole("Admin"))
+            {
+                <td>@item.Booking.PatientUser.Firstname</td>
+            }
+            @if (User.IsInRole("Patient") || User.IsInRole("Admin"))
+            {
+                <td>@item.Booking.BookableTimeSlot.DoctorUser.Firstname</td>
+            }
+            <td>@item.Booking.BookableTimeSlot.Branch.Name</td>
+            <td>
+                <img class="img-thumbnail" src="@Url.Content("~/Upload/"+item.ImagePath)" alt="Report Image" />
+            </td>
+            <td>@item.Title</td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @if (User.IsInRole("Admin") || User.IsInRole("Doctor"))
+                {
+                    @Html.Raw(" | ") @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    @Html.Raw(" | ") @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+                @Html.Raw(" | ") @Html.ActionLink("Send to Email", "SendReport", new { id = item.Id }, new { @class = "send-report-link" })
+            </td>
+        </tr>
+    }
 </table>

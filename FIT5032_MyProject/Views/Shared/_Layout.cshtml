@@ -31,7 +31,7 @@
 
 
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    
+
 
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -39,6 +39,7 @@
                         <li>@Html.ActionLink("Branch", "Index", "Branches")</li>
                         <li>@Html.ActionLink("Timeslot", "Index", "BookableTimeSlots")</li>
                         <li>@Html.ActionLink("Appointment", "Index", "Bookings")</li>
+                        <li>@Html.ActionLink("Report", "Index", "Reports")</li>
                     }
 
                 </ul>
