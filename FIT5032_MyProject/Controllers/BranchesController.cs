@@ -22,20 +22,20 @@ namespace FIT5032_MyProject.Controllers
             return View(db.Branches.ToList());
         }
 
-        public ActionResult GiveRate(int ID, int Rate)
+        [HttpPost]
+        public ActionResult GiveRate(int id, int Rate)
         {
             var userId = User.Identity.GetUserId();
             var rate = new Models.Rating
             {
-                BranchId = ID,
+                BranchId = id,
                 PatientUserId = userId,
                 rate = Rate
             };
 
-
             db.Ratings.Add(rate);//insert into database 
-
-            return RedirectToAction($"Details/{ID}");
+            db.SaveChanges();
+            return RedirectToAction($"Details/{id}");
         }
 
         // GET: Branches/Details/5
