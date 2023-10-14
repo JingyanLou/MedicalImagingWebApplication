@@ -40,6 +40,8 @@ namespace FIT5032_MyProject.Models
 
         public virtual DbSet<Report> Reports { get; set; }
 
+        public virtual DbSet<Rating> Ratings { get; set; }
+
         
 
         public static ApplicationDbContext Create()

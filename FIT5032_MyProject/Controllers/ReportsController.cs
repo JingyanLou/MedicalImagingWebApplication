@@ -222,17 +222,6 @@ namespace FIT5032_MyProject.Controllers
                 return View(report);
             }
 
-            // Check if the booking belongs to the logged-in doctor
-            var currentUserId = User.Identity.GetUserId();
-            var booking = db.Bookings.FirstOrDefault(b => b.Id == report.BookingId && b.BookableTimeSlot.DoctorUserId == currentUserId);
-
-
-            if (booking == null)
-            {
-                // If booking doesn't belong to the logged-in doctor or doesn't exist
-                ModelState.AddModelError("", "Invalid booking selected.");
-                return View(report);
-            }
 
             ModelState.Clear();
             var myUniqueFileName = string.Format(@"{0}", Guid.NewGuid());
