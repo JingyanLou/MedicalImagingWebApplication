@@ -42,6 +42,18 @@ namespace FIT5032_MyProject
 
             bundles.Add(new StyleBundle("~/Content/jqueryuicss").Include(
                       "~/Content/themes/base/jquery-ui.min.css"));//datetime
+
+            bundles.Add(new ScriptBundle("~/bundles/fullcalendar").Include( //calender js 
+                        "~/Scripts/lib/jquery.min.js",
+                        "~/Scripts/lib/moment.min.js",
+                        "~/Scripts/fullcalendar.js",
+                        "~/Scripts/calendar.js" //customized
+                        ));
+
+            bundles.Add(new StyleBundle("~/Content/fullcalendar").Include( //calender css 
+                  "~/Content/fullcalendar.css"));
+
+
         }
     }
 }

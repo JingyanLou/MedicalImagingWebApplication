@@ -4,16 +4,15 @@ using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
+using System.Net.Mail;
 
 namespace FIT5032_MyProject.Utils
 {
     public class EmailSender
     {
         // Please use your SendGrid API KEY here.
-        private const String API_KEY = "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";
+        // FIT5032PROJECT API SENDGIRD
+        private const String API_KEY = "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";
 
         public void Send(String toEmail, String subject, String contents)
         {
@@ -30,7 +29,7 @@ namespace FIT5032_MyProject.Utils
         public void SendWithAttachment(String toEmail, String subject, String contents, String attachmentPath)
         {
             var client = new SendGridClient(API_KEY);
-            var from = new EmailAddress("jlou0008@student.monash.edu", "FIT5032 Notification");
+            var from = new EmailAddress("jlou0008@student.monash.edu", "MegaScan");
             var to = new EmailAddress(toEmail, "");
             var plainTextContent = contents;
             var htmlContent = "<p>" + contents + "</p>";

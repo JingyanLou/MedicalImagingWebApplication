@@ -29,10 +29,16 @@ namespace FIT5032_MyProject.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Branch branch = db.Branches.Find(id);
+
             if (branch == null)
             {
                 return HttpNotFound();
             }
+
+            //fetch the bookabletimeslots for that branch 
+            var bookableTimeSlots = db.BookableTimeSlots.Where(b => b.BranchId == id.Value).ToList();
+            ViewBag.BookableTimeSlots = bookableTimeSlots;
+
             return View(branch);
         }
 

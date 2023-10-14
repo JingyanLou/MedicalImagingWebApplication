@@ -47,18 +47,20 @@
         }
 
         <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.ImagePath)
         </dt>
         <dd>
             <img src="@Url.Content("~/Upload/"+Model.ImagePath)" alt="Report Image" />
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+
 
     </dl>
 </div>
