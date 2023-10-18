@@ -21,6 +21,7 @@ namespace FIT5032_MyProject.Models
 
         [Required]
         [Display(Name = "Phone")]
+        //phonenumber can not be char... fix later 
         public string PhoneNumber { get; set; }
 
 

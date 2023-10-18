@@ -9,20 +9,13 @@ namespace FIT5032_MyProject.Models
 {
     public class Rating
     {
-        //patient can rate a branch!
-        public int Id { set; get; }
 
-        //rate the branch
+        //1 star to 5 stars
         [Required]
         [Range(1,5)]
-        public int star { set; get; }
+        public int rate { get; set; }
 
-        [Required]
-        public string PatientUserId { get; set; } // FK to AspNetUsers
-        [ForeignKey("PatientUserId")]
-        public virtual ApplicationUser PatientUser { get; set; }
-
-        //branch fk
+        //branch 
         [Required]
         public int BranchId { get; set; }
         [ForeignKey("BranchId")]

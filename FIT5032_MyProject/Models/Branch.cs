@@ -1,5 +1,7 @@
-﻿using System;
+﻿using FIT5032_MyProject.Migrations;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -15,12 +17,12 @@ namespace FIT5032_MyProject.Models
         public decimal Latitude { get; set; }
 
         public decimal Longitude { get; set; }
-
-        //rating  list 
-        public List<Rating> Ratings { get; set; }
         
-        //avgrating
-        public decimal AvgRating { get; set; }
+        public List<Rating> Ratings { get; set; }
+
+        [NotMapped]
+        public decimal AverageRating { get; set; }
+
 
     }
 }

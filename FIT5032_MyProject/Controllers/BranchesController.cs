@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FIT5032_MyProject.Models;
+using Microsoft.AspNet.Identity;
 
 namespace FIT5032_MyProject.Controllers
 {
@@ -21,8 +22,22 @@ namespace FIT5032_MyProject.Controllers
             return View(db.Branches.ToList());
         }
 
+        [HttpPost]
+        public ActionResult GiveRate(int Id, int Rate)
+        {
+            var userId = User.Identity.GetUserId();
+            var rate = new Models.Rating
+            {
+                BranchId = Id,
+                PatientUserId = userId,
+                rate = Rate
+            };
 
-         
+            db.Ratings.Add(rate);//insert into database 
+            db.SaveChanges();
+
+            return RedirectToAction($"Details/{Id}");
+        }
 
         // GET: Branches/Details/5
         public ActionResult Details(int? id)
@@ -41,6 +56,19 @@ namespace FIT5032_MyProject.Controllers
             //fetch the bookabletimeslots for that branch 
             var bookableTimeSlots = db.BookableTimeSlots.Where(b => b.BranchId == id.Value).ToList();
             ViewBag.BookableTimeSlots = bookableTimeSlots;
+
+            branch.Ratings =db.Ratings.Where(r=>r.BranchId==id).ToList();
+
+            //calculate the avg rating
+            // // Calculate the average rating for the branch
+            if (branch.Ratings.Any())
+            {
+                branch.AverageRating = (decimal)branch.Ratings.Average(r => r.rate);
+            }
+            else
+            {
+                branch.AverageRating = 0;
+            }
 
             return View(branch);
         }
@@ -136,5 +164,6 @@ namespace FIT5032_MyProject.Controllers
             }
             base.Dispose(disposing);
         }
+
     }
 }

@@ -222,6 +222,7 @@ namespace FIT5032_MyProject.Controllers
                 return View(report);
             }
 
+
             ModelState.Clear();
             var myUniqueFileName = string.Format(@"{0}", Guid.NewGuid());
             report.ImagePath = myUniqueFileName;

@@ -246,13 +246,17 @@
     <Compile Include="Migrations\202310101126023_newreportsystem.designer.cs">
       <DependentUpon>202310101126023_newreportsystem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202310140814145_ratingmodel.cs" />
-    <Compile Include="Migrations\202310140814145_ratingmodel.designer.cs">
-      <DependentUpon>202310140814145_ratingmodel.cs</DependentUpon>
+    <Compile Include="Migrations\202310141153121_ratings.cs" />
+    <Compile Include="Migrations\202310141153121_ratings.designer.cs">
+      <DependentUpon>202310141153121_ratings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202310140817019_branchrating.cs" />
-    <Compile Include="Migrations\202310140817019_branchrating.designer.cs">
-      <DependentUpon>202310140817019_branchrating.cs</DependentUpon>
+    <Compile Include="Migrations\202310141203233_ratingchange.cs" />
+    <Compile Include="Migrations\202310141203233_ratingchange.designer.cs">
+      <DependentUpon>202310141203233_ratingchange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310141306554_branchremove.cs" />
+    <Compile Include="Migrations\202310141306554_branchremove.designer.cs">
+      <DependentUpon>202310141306554_branchremove.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -280,6 +284,7 @@
     <Content Include="Content\fullcalendar.print.min.css" />
     <Content Include="Content\jquery.dataTables.css" />
     <Content Include="Content\jquery.dataTables.min.css" />
+    <Content Include="Content\rate.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -563,11 +568,14 @@
     <EmbeddedResource Include="Migrations\202310101126023_newreportsystem.resx">
       <DependentUpon>202310101126023_newreportsystem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202310140814145_ratingmodel.resx">
-      <DependentUpon>202310140814145_ratingmodel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202310141153121_ratings.resx">
+      <DependentUpon>202310141153121_ratings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202310140817019_branchrating.resx">
-      <DependentUpon>202310140817019_branchrating.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202310141203233_ratingchange.resx">
+      <DependentUpon>202310141203233_ratingchange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310141306554_branchremove.resx">
+      <DependentUpon>202310141306554_branchremove.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
