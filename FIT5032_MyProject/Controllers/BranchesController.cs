@@ -21,6 +21,9 @@ namespace FIT5032_MyProject.Controllers
             return View(db.Branches.ToList());
         }
 
+
+         
+
         // GET: Branches/Details/5
         public ActionResult Details(int? id)
         {

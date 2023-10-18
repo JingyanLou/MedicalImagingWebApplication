@@ -179,6 +179,7 @@
     <Compile Include="Controllers\BookableTimeSlotsController.cs" />
     <Compile Include="Controllers\BookingsController.cs" />
     <Compile Include="Controllers\BranchesController.cs" />
+    <Compile Include="Controllers\BulkEmailsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
@@ -245,13 +246,23 @@
     <Compile Include="Migrations\202310101126023_newreportsystem.designer.cs">
       <DependentUpon>202310101126023_newreportsystem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310140814145_ratingmodel.cs" />
+    <Compile Include="Migrations\202310140814145_ratingmodel.designer.cs">
+      <DependentUpon>202310140814145_ratingmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202310140817019_branchrating.cs" />
+    <Compile Include="Migrations\202310140817019_branchrating.designer.cs">
+      <DependentUpon>202310140817019_branchrating.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookableTimeSlot.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Branch.cs" />
+    <Compile Include="Models\BulkEmailViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\SendReportViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -487,6 +498,7 @@
     <Content Include="Views\Reports\Index.cshtml" />
     <Content Include="Views\Reports\Sendreport.cshtml" />
     <Content Include="Views\Reports\ShowImage.cshtml" />
+    <Content Include="Views\BulkEmails\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -550,6 +562,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310101126023_newreportsystem.resx">
       <DependentUpon>202310101126023_newreportsystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310140814145_ratingmodel.resx">
+      <DependentUpon>202310140814145_ratingmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310140817019_branchrating.resx">
+      <DependentUpon>202310140817019_branchrating.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

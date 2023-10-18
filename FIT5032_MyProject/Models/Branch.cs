@@ -15,8 +15,12 @@ namespace FIT5032_MyProject.Models
         public decimal Latitude { get; set; }
 
         public decimal Longitude { get; set; }
+
+        //rating  list 
+        public List<Rating> Ratings { get; set; }
         
-        
+        //avgrating
+        public decimal AvgRating { get; set; }
 
     }
 }

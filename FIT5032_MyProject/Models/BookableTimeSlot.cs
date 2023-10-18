@@ -24,7 +24,7 @@ namespace FIT5032_MyProject.Models
         [DataType(DataType.Time)]
         public DateTime EndTime { get; set; }
 
-
+        
         //branch fk
         [Required]
         public int BranchId { get; set; }

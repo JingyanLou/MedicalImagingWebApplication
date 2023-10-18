@@ -1,0 +1,73 @@
+﻿@model IEnumerable<FIT5032_MyProject.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Send Bulk Emails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@if (ViewBag.Result != null)
+{
+    <div class="alert alert-success">@ViewBag.Result</div>
+}
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">@ViewBag.Error</div>
+}
+
+@using (Html.BeginForm("SendEmails", "BulkEmails", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="EmailSubject">Subject:</label>
+        <input type="text" id="EmailSubject" name="EmailSubject" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="EmailContent">Content:</label>
+        <textarea id="EmailContent" name="EmailContent" class="form-control" rows="5" required></textarea>
+    </div>
+
+    <h4>Select Users:</h4>
+    <table class="table" id="datatable">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Email Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" name="SelectedUsers" value="@user.Email" />
+                    </td>
+                    <td>
+                        @user.Email
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="form-group">
+        <input type="submit" value="Send Emails" class="btn btn-primary" />
+    </div>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/datatable")
+
+    <script>
+        $(document).ready(function () {
+            let table = new DataTable('#datatable');
+        });
+    </script>
+}
