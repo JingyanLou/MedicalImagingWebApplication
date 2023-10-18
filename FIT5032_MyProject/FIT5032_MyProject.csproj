@@ -183,6 +183,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
+    <Compile Include="Controllers\StatsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -273,6 +274,7 @@
     <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Report.cs" />
     <Compile Include="Models\SendReportViewModels.cs" />
+    <Compile Include="Models\StatsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\EmailSender.cs" />
@@ -508,6 +510,7 @@
     <Content Include="Views\Reports\Sendreport.cshtml" />
     <Content Include="Views\Reports\ShowImage.cshtml" />
     <Content Include="Views\BulkEmails\Index.cshtml" />
+    <Content Include="Views\Stats\BookingStats.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
