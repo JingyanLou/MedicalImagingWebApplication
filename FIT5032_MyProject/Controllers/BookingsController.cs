@@ -102,6 +102,9 @@ namespace FIT5032_MyProject.Controllers
                 //save chanegs to the database 
                 db.Bookings.Add(booking);
                 db.SaveChanges();
+
+                //sent user the information of the email -- to be implemented! 
+
                 return RedirectToAction("Index");
             }
             else

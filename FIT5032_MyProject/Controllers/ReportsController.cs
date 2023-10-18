@@ -10,6 +10,10 @@ using System.Web.Mvc;
 using FIT5032_MyProject.Models;
 using FIT5032_MyProject.Utils;
 using Microsoft.AspNet.Identity;
+using System.Drawing; 
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.Drawing.Imaging;
 
 namespace FIT5032_MyProject.Controllers
 {
@@ -57,6 +61,86 @@ namespace FIT5032_MyProject.Controllers
                 .ToList();
             return View(allReports);
         }
+
+
+        [HttpGet]
+        public ActionResult ExportImage(int id, string format)
+        {
+            // Find the report by ID
+            var report = db.Reports.Find(id);
+            if (report == null)
+            {
+                return HttpNotFound();
+            }
+
+            var imagePath = Server.MapPath("~/Upload/" + report.ImagePath);
+
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.Drawing.Image image = System.Drawing.Image.FromFile(imagePath);
+                MemoryStream stream = new MemoryStream();
+
+                switch (format.ToLower())
+                {
+                    case "pdf":
+                        // Export as PDF
+                        Document pdfDoc = new Document(PageSize.A4);
+                        PdfWriter.GetInstance(pdfDoc, stream);
+                        pdfDoc.Open();
+                        iTextSharp.text.Image pdfImage = iTextSharp.text.Image.GetInstance(image, ImageFormat.Png);
+                        pdfDoc.Add(pdfImage);
+                        pdfDoc.Close();
+                        return File(stream.ToArray(), "application/pdf", "Report.pdf");
+
+                    case "png":
+                        // Export as PNG
+                        image.Save(stream, ImageFormat.Png);
+                        return File(stream.ToArray(), "image/png", "Report.png");
+
+                    case "jpeg":
+                        // Export as JPEG
+                        image.Save(stream, ImageFormat.Jpeg);
+                        return File(stream.ToArray(), "image/jpeg", "Report.jpeg");
+
+                    default:
+                        // Unsupported format
+                        ViewBag.Error = "Unsupported format requested.";
+                        return RedirectToAction("Details", new { id });
+                }
+            }
+            else
+            {
+                // File doesn't exist
+                ViewBag.Error = "File not found.";
+                return RedirectToAction("Details", new { id });
+            }
+        }
+
+        public ActionResult DownloadImage(int id)
+        {
+            // Find the report with the specified ID
+            var report = db.Reports.Find(id);
+            if (report == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Get the physical path of the image file
+            var imagePath = Server.MapPath("~/Upload/" + report.ImagePath);
+
+            // Check if the file exists
+            if (!System.IO.File.Exists(imagePath))
+            {
+                return HttpNotFound();
+            }
+
+            // Get the file name
+            string fileName = Path.GetFileName(imagePath);
+
+            // Return the file for download
+            return File(imagePath, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+        }
+
 
 
         //get

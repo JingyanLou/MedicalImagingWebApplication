@@ -20,8 +20,5 @@ namespace FIT5032_MyProject.Models
         public virtual Booking Booking { get; set; }
 
 
-
-
-
     }
 }

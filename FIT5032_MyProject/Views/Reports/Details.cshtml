@@ -60,7 +60,13 @@
             <img src="@Url.Content("~/Upload/"+Model.ImagePath)" alt="Report Image" />
         </dd>
 
+        <div>
+            <a href="@Url.Action("ExportImage", new { id = Model.Id, format = "pdf" })" class="btn btn-primary">Export as PDF</a>
+            <a href="@Url.Action("ExportImage", new { id = Model.Id, format = "png" })" class="btn btn-primary">Export as PNG</a>
+            <a href="@Url.Action("ExportImage", new { id = Model.Id, format = "jpeg" })" class="btn btn-primary">Export as JPEG</a>
+        </div>
 
+       
 
     </dl>
 </div>
