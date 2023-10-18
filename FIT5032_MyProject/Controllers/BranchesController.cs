@@ -57,7 +57,7 @@ namespace FIT5032_MyProject.Controllers
             var bookableTimeSlots = db.BookableTimeSlots.Where(b => b.BranchId == id.Value).ToList();
             ViewBag.BookableTimeSlots = bookableTimeSlots;
 
-            branch.Ratings =db.Ratings.Where(r=>r.BranchId==id).ToList();
+            branch.Ratings = db.Ratings.Where(r => r.BranchId == id).ToList();
 
             //calculate the avg rating
             // // Calculate the average rating for the branch

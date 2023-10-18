@@ -21,7 +21,7 @@ namespace FIT5032_MyProject.Models
         public string Lastname { get; set; }
         public DateTime DOB { get; set; }
 
-       
+
 
     }
 
@@ -35,10 +35,14 @@ namespace FIT5032_MyProject.Models
 
         public virtual DbSet<Branch> Branches { get; set; }
         public virtual DbSet<BookableTimeSlot> BookableTimeSlots { get; set; }
-        
+
         public virtual DbSet<Booking> Bookings { get; set; }
 
         public virtual DbSet<Report> Reports { get; set; }
+
+        public virtual DbSet<Rating> Ratings { get; set; }
+
+
 
         public static ApplicationDbContext Create()
         {

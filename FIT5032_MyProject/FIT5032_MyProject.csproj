@@ -258,6 +258,10 @@
     <Compile Include="Migrations\202310141306554_branchremove.designer.cs">
       <DependentUpon>202310141306554_branchremove.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202310180140047_ratewtf.cs" />
+    <Compile Include="Migrations\202310180140047_ratewtf.designer.cs">
+      <DependentUpon>202310180140047_ratewtf.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookableTimeSlot.cs" />
@@ -576,6 +580,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202310141306554_branchremove.resx">
       <DependentUpon>202310141306554_branchremove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202310180140047_ratewtf.resx">
+      <DependentUpon>202310180140047_ratewtf.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
