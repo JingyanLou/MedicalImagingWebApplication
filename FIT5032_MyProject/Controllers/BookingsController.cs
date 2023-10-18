@@ -17,6 +17,8 @@ namespace FIT5032_MyProject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Booking
+
+        [Authorize]
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId(); //get current user id
@@ -55,6 +57,7 @@ namespace FIT5032_MyProject.Controllers
                 return View(allbookings);
             
         }
+
 
 
         // GET: Booking/Details/5

@@ -12,9 +12,15 @@
     {
         @Html.ActionLink("Create New", "Create", "Branch", new { @class = "btn btn-success" })
     }
+
+
 </p>
 
 <div id='map' style='height:300px;'></div>
+
+
+@Html.ActionLink("Export to CSV", "ExportToCSV", null, new { @class = "btn btn-primary", @style = "margin-top: 15px; margin-bottom: 15px;" })
+
 
 
 <table class="table" id="datatable">

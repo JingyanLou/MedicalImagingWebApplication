@@ -10,6 +10,7 @@ namespace FIT5032_MyProject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        [Authorize(Roles = "Admin")]
         // GET: Stats
         public ActionResult BookingStats()
         {

@@ -10,7 +10,8 @@
         Welcome to MegaScan!
         Melbourne's premier destination for MRI imaging services. Combining advanced technology with unparalleled expertise, we deliver clear, precise results for your health and peace of mind. Entrust your diagnostic journey with us
     </p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Book an appointment &raquo;</a></p>
+    <p><a href="@Url.Action("Index", "Branches")" class="btn btn-primary btn-lg">Book an appointment &raquo;</a></p>
+
 </div>
 
 <div class="row">
@@ -19,18 +20,17 @@
         <p>
             Discover MegaScan's premier MRI imaging services across Melbourne. Locate a branch nearby and experience our commitment to excellence.
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Branches")">View Branches &raquo;</a></p>
     </div>
+
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Become a member</h2>
+        <p>
+            Become a memeber of MegaScan family and explore different fantastic services we provide!
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Register", "Account")">Register Now &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+
 </div>
 
 @section scripts {

@@ -14,7 +14,7 @@ namespace FIT5032_MyProject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        //[Authorize]
+        [Authorize(Roles = "Admin")]
         // GET: BookableTimeSlots
         public ActionResult Index()
         {

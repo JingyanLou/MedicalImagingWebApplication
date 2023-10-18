@@ -21,6 +21,7 @@ namespace FIT5032_MyProject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        [Authorize]
         // GET: Reports
         // GET: Reports
         public ActionResult Index()

@@ -84,13 +84,13 @@
                 <td class="doctor">@slot.DoctorUser.Firstname</td>
                 <td class="availability">@slot.IsAvailable</td>
                 <td>
-                    @if (!User.IsInRole("Admin"))
+                    @if (User.IsInRole("Patient"))
                     {
-                        @: @Html.ActionLink("Details", "Details", "BookableTimeSlots", new { id = slot.Id }, new { @class = "btn btn-success" })
                         @Html.ActionLink("Book", "Create", "Bookings", new { id = slot.Id }, new { @class = "btn btn-success" })
                     }
                     else if (User.IsInRole("Admin"))
                     {
+                        @: @Html.ActionLink("Details", "Details", "BookableTimeSlots", new { id = slot.Id }, new { @class = "btn btn-success" })
                         @: @Html.ActionLink("Edit", "Edit", "BookableTimeSlots", new { id = slot.Id }, new { @class = "btn btn-success" }) |
                         @: @Html.ActionLink("Details", "Details", "BookableTimeSlots", new { id = slot.Id }, new { @class = "btn btn-success" }) |
                         @: @Html.ActionLink("Delete", "Delete", "BookableTimeSlots", new { id = slot.Id }, new { @class = "btn btn-danger" })

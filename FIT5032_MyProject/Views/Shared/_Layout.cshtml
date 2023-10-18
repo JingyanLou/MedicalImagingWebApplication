@@ -20,7 +20,7 @@
     @*chart js *@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
+   
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -42,15 +42,26 @@
 
                     @if (User.Identity.IsAuthenticated)
                     {
-
+                        // Visible to everyone who is authenticated
                         <li>@Html.ActionLink("Branch", "Index", "Branches")</li>
-                        <li>@Html.ActionLink("Timeslot", "Index", "BookableTimeSlots")</li>
                         <li>@Html.ActionLink("Appointment", "Index", "Bookings")</li>
                         <li>@Html.ActionLink("Report", "Index", "Reports")</li>
-                        <li>@Html.ActionLink("Send Emails", "Index", "BulkEmails")</li>
-                        <li>@Html.ActionLink("View Statistics", "BookingStats", "Stats")</li>
 
+                        if (User.IsInRole("Admin"))
+                        {
+                            // Visible only to Admin
+                            <li>@Html.ActionLink("Timeslot", "Index", "BookableTimeSlots")</li>
+                            <li>@Html.ActionLink("Send Emails", "Index", "BulkEmails")</li>
+                            <li>@Html.ActionLink("View Statistics", "BookingStats", "Stats")</li>
+                        }
+
+                        //if (User.IsInRole("Doctor"))
+                       //{
+                            // Visible only to Doctor
+                            //<li>@Html.ActionLink("Timeslot", "Index", "BookableTimeSlots")</li>
+                        //}
                     }
+
 
                 </ul>
                 @Html.Partial("_LoginPartial")

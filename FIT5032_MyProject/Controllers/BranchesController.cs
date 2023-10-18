@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,12 +16,33 @@ namespace FIT5032_MyProject.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        //[Authorize]
+        [Authorize]
         // GET: Branches
         public ActionResult Index()
         {
             return View(db.Branches.ToList());
         }
+
+        public ActionResult ExportToCSV()
+        {
+            StringWriter sw = new StringWriter();
+            sw.WriteLine("\"ID\",\"Name\",\"Address\",\"Latitude\",\"Longitude\"");
+
+            Response.ClearContent();
+            Response.AddHeader("content-disposition", "attachment;filename=Branches.csv");
+            Response.ContentType = "text/csv";
+
+            foreach (var branch in db.Branches)
+            {
+                sw.WriteLine($"{branch.Id},\"{branch.Name}\",\"{branch.Address}\",{branch.Latitude},{branch.Longitude}");
+            }
+
+            Response.Write(sw.ToString());
+            Response.End();
+
+            return RedirectToAction("Index");
+        }
+
 
         [HttpPost]
         public ActionResult GiveRate(int Id, int Rate)

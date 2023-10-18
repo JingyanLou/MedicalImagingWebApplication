@@ -59,7 +59,7 @@
                 {
                     @Html.Raw(" | ") @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
                 }
-                @Html.Raw(" | ") @Html.ActionLink("Send to Email", "SendReport", new { id = item.Id }, new { @class = "btn btn-success" })
+                @Html.Raw(" | ") @Html.ActionLink("Email", "SendReport", new { id = item.Id }, new { @class = "btn btn-success" })
             </td>
         </tr>
     }
