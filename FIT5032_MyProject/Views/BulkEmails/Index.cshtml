@@ -23,15 +23,6 @@
 
     @Html.AntiForgeryToken()
 
-    <div class="form-group">
-        <label for="EmailSubject">Subject:</label>
-        <input type="text" id="EmailSubject" name="EmailSubject" class="form-control" required />
-    </div>
-
-    <div class="form-group">
-        <label for="EmailContent">Content:</label>
-        <textarea id="EmailContent" name="EmailContent" class="form-control" rows="5" required></textarea>
-    </div>
 
     <h4>Select Users:</h4>
     <table class="table" id="datatable">
@@ -55,6 +46,17 @@
             }
         </tbody>
     </table>
+
+    <div class="form-group">
+        <label for="EmailSubject">Subject:</label>
+        <input type="text" id="EmailSubject" name="EmailSubject" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="EmailContent">Content:</label>
+        <textarea id="EmailContent" name="EmailContent" class="form-control" rows="5" required></textarea>
+    </div>
+
 
     <div class="form-group">
         <input type="submit" value="Send Emails" class="btn btn-primary" />
