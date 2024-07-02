@@ -26,3 +26,6 @@ The application was developed using a stepped approach, with each business requi
 - Developed as part of the FIT5032 Internet Applications Development course.
 - Targeted for medical imaging services but adaptable for other medical services.
 - Grade: High Destinction (84%) 
+
+## Database Diagram
+<img width="486" alt="image" src="https://github.com/JingyanLou/MedicalImagingWebApplication/assets/92469426/9e90e150-3f45-4bca-ae0c-80d7056413d6">
